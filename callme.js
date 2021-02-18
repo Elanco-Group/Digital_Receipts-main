@@ -9,6 +9,8 @@ var flag = false;
 var wasEmpty = false;
 // Variables to hold data extracted from receipt
 var user;
+
+var receiptURL;
 var clinicName;
 var clinicNameConf = false; //1
 var clinicAddress;
@@ -352,7 +354,8 @@ async function recognizeCustom(path) {
                 //}
                 confidenceAlert(field.confidence, 4);
             }
-   
+               receiptURL = path;
+
             console.log(
                 `Field ${fieldName} has value '${field.value}' with a confidence score of ${field.confidence}`
             );
@@ -372,27 +375,9 @@ async function testFunction(path)
         console.error("The sample encountered an error:", err);
     });
 
-    // creates schema
-     const newData = new rebateData ({
-
-         clinicName,
-         clinicAddress,
-         invoiceDate,
-         patient,
-         items,
-     })
-    
+        
     // saves to database
-    newData.save(function (error,document){
-     if (error) console.error(error)
-    
-    console.log(document);
-    
-        items = [];
-        console.log(items);
-
-    })
-
+  
     console.log(clinicNameConf);
     console.log(clinicAddressConf);
     console.log(invoiceDateConf);
@@ -411,6 +396,7 @@ async function testFunction(path)
         invoiceDate,
         patient,
         items,
+        receiptURL,
         
         clinicNameConf,
         clinicAddressConf,

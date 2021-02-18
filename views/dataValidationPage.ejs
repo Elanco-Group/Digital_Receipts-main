@@ -103,11 +103,12 @@
         function itemsConfCheck(value)
         {
             var x = document.getElementById("itemsConfidence");
-            if (value === true || (<%- items[i]%> === undefined)) {
-                x.style.display = "block";
-                } else if ( value === false ) {
+            if (value === true) {
+                x.style.display = "block";  
+            } 
+            else if ( value === false ) {
                 x.style.display = "none";
-                }
+            }
 
             console.log(value);
         }

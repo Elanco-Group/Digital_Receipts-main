@@ -21,7 +21,7 @@
         <div class = "logoContainer"></div>
         <div class = "userBar">
 
-            <div class = "userbarBtn"><p>Hello <%= name %></p></div>
+            <div class = "userbarBtn"><p></p></div>
             <form action ="logout?_method=DELETE" method="POST">
               <button type ="submit" id = "logout">Log Out</button>
           </form>
@@ -33,96 +33,26 @@
             <section class = "tableDiv">
                 <table>
                     <tr>
-                      <th>#</th>
-                      <th>Date</th>
+                      <th>Invoice Date</th>
+                      <th>Receipt Image</th>
                       <th>Pet</th>
-                      <th>Total</th>
+                      <th>clinic Name</th>
                     </tr>
-
-                    <tr>
-                      <td>1</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£200</td>
-                    </tr>
-
-                    
-                    <tr>
-                      <td>2</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£20</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>3</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£40</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£200</td>
-                    </tr>
+           
+                    <% for(var i = 0; i < Receipts.length; i++) { %>
+                      <tr>
+                        <td><%= Receipts[i].invoiceDate %></td>
+                        <td><a href = "/receipts/<%= Receipts[i].imagePath %>"> IMAGE</a></td>
+                        <td><%= Receipts[i].patient %></td>
+                        <td><%= Receipts[i].clinicName %></td>
+                        
 
                     
-                    <tr>
-                      <td>2</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£20</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>3</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£40</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£200</td>
-                    </tr>
-
-                    
-                    <tr>
-                      <td>2</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£20</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>3</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£40</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£200</td>
-                    </tr>
-
-                    
-                    <tr>
-                      <td>2</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£20</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>3</td>
-                      <td>01/01/2020</td>
-                      <td>Mittens</td>
-                      <td>£40</td>
-                    </tr>
+                      </tr>
+                      
+                    <% } %>
+                  
+                   
                   </table>
             </section>
                                       <input type="button" value="Back" id = "back" onclick = "location.href ='./userDash'"><br>

@@ -6,6 +6,14 @@ const rebateSchema = new Schema({
     user:{
         type: Schema.Types.ObjectID, ref: 'user'
     },
+    receiptURL:{
+        type: String,
+        required: true
+    },
+    imagePath:{
+        type: String,
+        required: true
+    },
     clinicName:{
         type: String,
         required: true

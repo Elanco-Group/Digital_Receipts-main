@@ -20,7 +20,11 @@ initializePassport(
     passport, 
 )
 
+const rebateData = require("./models/rebate.js");
+
 var result;
+var theUser;
+var filename;
 
 app.set ("view engine", "ejs");
 
@@ -62,7 +66,6 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
         const newUser = new User({
-            id: Date.now().toString(),
             title: req.body.title,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -70,6 +73,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             emailAddress: req.body.email,
             password: hashedPassword
         })
+
 
         newUser.save(function (error, document){
             if (error) console.error(error);
@@ -83,20 +87,35 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 })
 
 app.get('/userDash', checkAuthenticated, (req, res) => {
+            theUser = req.user;
+
     res.render('userDash.ejs', { name: req.user.firstName })
 })
 
-app.post('/userDash', checkAuthenticated,(req, res) => {
-    
-})
 
 app.get('/addRecs', checkAuthenticated, (req, res) => {
     res.render('addRecs.ejs', { name: req.user.firstName })
 })
 
-app.get('/recHistory', checkAuthenticated, (req, res) => {
-    res.render('recHistory.ejs', { name: req.user.firstName })
+app.get('/dataValidation', checkAuthenticated, (req, res) => {
+    res.render('dataValidation.ejs', { user: req.user._id})
 })
+
+app.get('/recHistory', checkAuthenticated, async (req, res) => {
+
+    var Receipts = await findUserReceipt();
+
+    console.log("Receipts log !!!! = "+Receipts);
+
+    res.render('recHistory.ejs', { Receipts })
+})
+
+async function findUserReceipt() {
+
+  return await rebateData.find({ user: theUser._id })
+    
+};
+
 
 app.delete('/logout', (req, res) => {
     req.logOut()
@@ -154,9 +173,9 @@ app.post("/addRecs", async function (req, res) {
 
   // if the file is found, save it to the reciepts folder
   if (req.files) {
-    var file = req.files.imgPath,
-      filename = file.name;
-    var fullFilepath = __dirname + filename;
+    var file = req.files.imgPath;
+    filename = file.name;
+    var fullFilepath = __dirname + "/public/receipts/"+filename;
 
     file.mv(fullFilepath, async function (err) {
       if (err) {
@@ -176,18 +195,21 @@ app.post("/addRecs", async function (req, res) {
   }
 });
 
+
+
 app.post("/dataValidationPage",function(req,res)
 {
-
-    const rebateData = require("./models/rebate.js");
     // creates schema
+    console.log("USER ID = "+ theUser);
      const newData = new rebateData ({
-
+         user: theUser._id,
          clinicName: result.clinicName,
          clinicAddress: result.clinicAddress,
          invoiceDate: result.invoiceDate,
          patient: result.patient,
          items: result.items,
+         receiptURL: result.receiptURL,
+         imagePath: filename,
 
      })
 
