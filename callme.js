@@ -100,7 +100,7 @@ async function prebuiltRecog(path){
                   merchantNameField.confidence
                 }`
               );
-              clinicName = merchantNameField.value + " :from prebuilt";
+              clinicName = merchantNameField.value;
               confidenceAlert(merchantNameField.confidence, 1);
             }
       
@@ -176,7 +176,7 @@ async function prebuiltRecog(path){
             console.log(`    Vet Address: '${vetAddressField.value || "<missing>"}', with confidence of ${
                 vetAddressField.confidence
                 }`);
-            clinicAddress = vetAddressField.value + " :from prebuilt";   
+            clinicAddress = vetAddressField.value;   
             confidenceAlert(vetAddressField.confidence, 2);
         }
       }

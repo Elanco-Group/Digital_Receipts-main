@@ -101,6 +101,8 @@ label
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
     color:white;
+    font-weight: bold;
+    font-size: large;
 }
 
 input[type=text], select, textarea 
@@ -204,4 +206,11 @@ tr:nth-child(odd){
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .ConfCheck {
+    font-family: 'Open Sans', sans-serif;
+    color:red;
+    font-weight: bold;
+    font-size: smaller;
   }

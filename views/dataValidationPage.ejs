@@ -18,33 +18,33 @@
             <form action = "" method = "POST"> 
           
                 <p><label for="clinicName">Clinic Name:</label>  
-                
-                    <input type="text" name="clinicname" id="clinicName" placeholder="Please Enter the Clinic Name" value = "<%- clinicName %>"> </p> 
-                    <div id="clinicNameConfidence">
+                    
+                    <div id="clinicNameConfidence" class="ConfCheck">
                         <p>Please check this value.</p>
                     </div>
+                    <input type="text" name="clinicname" id="clinicName" placeholder="Please Enter the Clinic Name" value = "<%- clinicName %>"> </p> 
                 
                 <p><label for="clinicAddress">Clinic Address:</label> 
-                
-                    <input type="text" name="clinicAddress" id="clinicAddress" placeholder="Please Enter The Clinic Address" value = "<%- clinicAddress %>"> </p>
-                    <div id="clinicAddressConfidence">
+                    <div id="clinicAddressConfidence" class="ConfCheck">
                         <p>Please check this value.</p>
                     </div>
+                
+                    <input type="text" name="clinicAddress" id="clinicAddress" placeholder="Please Enter The Clinic Address" value = "<%- clinicAddress %>"> </p>
                     <p><label for="invoiceDate">Date Issued:</label>  
                 
-                        <input type="text" name="invoiceDate" id="invoiceDate" placeholder="Please Enter The Date of Invoice" value = "<%= invoiceDate %>"> </p>
-                        <div id="invoiceDateConfidence">
+                        <div id="invoiceDateConfidence" class="ConfCheck">
                             <p>Please check this value.</p>
                         </div>
+                        <input type="text" name="invoiceDate" id="invoiceDate" placeholder="Please Enter The Date of Invoice" value = "<%= invoiceDate %>"> </p>
                     
                     <p><label for="Items">Products:</label> 
-
+                        
+                        <div id="itemsConfidence" class="ConfCheck">
+                          <p>Please check this value.</p>
+                      </div>
                         <% for(var i = 0; i < items.length; i++) { %>
                             <input type="text" name="Info" id="Info" placeholder="Product" value = "<%= items[i] %>">
                           <% } %>                                                                          
-                          <div id="itemsConfidence">
-                            <p>Please check this value.</p>
-                        </div>
                
                 <p><input type = "submit" value = "Confirm"> </p>
                     </form> </div>
@@ -61,10 +61,12 @@
     <script>
         function clinicNameConfCheck(value)
         {
-            if ( value === true ) {
-                $( "#clinicNameConfidence" ).show();
+            var x = document.getElementById("clinicNameConfidence");
+
+            if (value === true) {
+                x.style.display = "block";
                 } else if ( value === false ) {
-                $( "#clinicNameConfidence" ).hide();
+                x.style.display = "none";
                 }
 
             console.log(value);
@@ -72,37 +74,43 @@
 
         function clinicAddrConfCheck(value)
         {
-            if ( value === true ) {
-                $( "#clinicAddressConfidence" ).show();
+            var x = document.getElementById("clinicAddressConfidence");
+            if (value === true) {
+                x.style.display = "block";
                 } else if ( value === false ) {
-                $( "#clinicAddressConfidence" ).hide();
+                x.style.display = "none";
                 }
-                console.log(value);
+
+            console.log(value);
         }   
 
         function invoiceDateConfCheck(value)
         {
-            if ( value === true ) {
-                $( "#invoiceDateConfidence" ).show();
+            var x = document.getElementById("invoiceDateConfidence");
+            if (value === true) {
+                x.style.display = "block";
                 } else if ( value === false ) {
-                $( "#invoiceDateConfidence" ).hide();
+                x.style.display = "none";
                 }
-                console.log(value);
+
+            console.log(value);
         }       
 
         function itemsConfCheck(value)
         {
-            if ( value === true ) {
-                $( "#itemsConfidence" ).show();
+            var x = document.getElementById("itemsConfidence");
+            if (value === true) {
+                x.style.display = "block";
                 } else if ( value === false ) {
-                $( "#itemsConfidence" ).hide();
+                x.style.display = "none";
                 }
-                console.log(value);
+
+            console.log(value);
         }
-        //clinicNameConfCheck('<%- clinicNameConf %>');
-        //clinicAddrConfCheck('<%- clinicAddressConf %>');
-        //invoiceDateConfCheck('<%- invoiceDateConf %>');
-        //itemsConfCheck('<%- itemsConf %>');
+        clinicNameConfCheck(<%- clinicNameConf %>);
+        clinicAddrConfCheck(<%- clinicAddressConf %>);
+        invoiceDateConfCheck(<%- invoiceDateConf %>);
+        itemsConfCheck(<%- itemsConf %>);
     </script>
 </body>
 </html>
