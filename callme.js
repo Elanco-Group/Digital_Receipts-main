@@ -19,9 +19,84 @@ var patient;
 var items = [];
 var itemsConf = false; //4
 
+var containsElancoProduct = false;
+
+
 // Variable to hold schema
 
 const rebateData = require("./models/rebate.js");
+
+const ElancoProducts =[
+  "Atopica","cyclosporine capsules",
+  "Bronchi-Shield Oral",
+  "Clomicalm","clomipramine hydrochloride",
+  "Comfortis","spinosad",
+  "Credelio","lotilaner",
+  "Deramaxx","deracoxib",
+  "Duramune",
+  "Duramune Lyme",
+  "Entyce","capromorelin oral solution",
+  "Galliprant","grapiprant tablets",
+  "Interceptor","milbemycin oxime",
+  "Interceptor Plus","milbemycin oxime/praziquantel",
+  "Nocita","bupivacaine liposome injectable suspension",
+  "Onsior","robenacoxib",
+  "Onsior","robenacoxib injection",
+  "Percorten-V","desoxycorticosterone pivalate injectable suspension",
+  "Rabvac",
+  "Surolan","miconazole nitrate, polymyxin B sulfate, prednisolone acetate",
+  "Tanovea-ca1","rabacfosadine for injection",
+  "Trifexis","spinosad + milbemycin oxime",
+  "Ultra Duramune",
+  "Verspon Absorbable Hemostatic Gelatin Sponge",
+  "Zobuxa","enrofloxacin",
+  "Atopica for Cats","cyclosporine oral solution USP Modified",
+  "Cheristin for cats spinetoram",
+  "Comfortis","spinosad",
+  "Fel-O-Guard",
+  "Fel-O-Vax",
+  "Interceptor","milbemycin oxime",
+  "Itrafungol","itraconazole oral solution",
+  "MilbeMite OTIC Solution","0.1% milbemycin oxime",
+  "Nocita","bupivacaine liposome injectable suspension",
+  "Onsior","robenacoxib",
+  "Onsior","robenacoxib injection",
+  "Rabvac",
+  "Ultra Fel-O-Vax",
+  "Ultra Hybrid",
+  "UltraNasal",
+  "Verspon Absorbable Hemostatic Gelatin Sponge",
+  "Zobuxa","enrofloxacin"];
+  
+  function compareItems(items){
+    console.log("in compare items");
+
+    if(items[0] != undefined){     
+
+      //console.log(items[0].split(' '));
+      
+      for(let i = 0; i < ElancoProducts.length; i++){
+        for(let j = 0; j < items.length; j++){
+          var splitItems = items[j].split(' ')
+          for(let n = 0; n < splitItems.length; n++){
+            if(splitItems[n] === ElancoProducts[i]){
+                console.log("out of loop.");
+                console.log(items);
+                return true;
+                //this is where we would return pos and item.
+            }
+          }
+        }
+      }
+        
+        console.log("out of loop.");
+        return false;
+    }
+    else{
+      return false;
+    }
+  }
+
 
 function confidenceAlert(confidence, which)
 {
@@ -318,12 +393,18 @@ async function testFunction(path)
 
     })
 
-// variables for exported function to return
     console.log(clinicNameConf);
     console.log(clinicAddressConf);
     console.log(invoiceDateConf);
     console.log(itemsConf);
-
+    
+    console.log(items);
+    containsElancoProduct= compareItems(items);
+    console.log(containsElancoProduct);
+    console.log("at elanco products");
+    
+    
+    // variables for exported function to return
     return {
         clinicName,
         clinicAddress,
@@ -335,6 +416,7 @@ async function testFunction(path)
         clinicAddressConf,
         invoiceDateConf,
         itemsConf,
+        containsElancoProduct,
     } 
 }
 

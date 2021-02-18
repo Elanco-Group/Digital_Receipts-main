@@ -46,6 +46,10 @@
                             <input type="text" name="Info" id="Info" placeholder="Product" value = "<%= items[i] %>">
                           <% } %>                                                                          
                
+                <div id="elancoProducts">
+                    <h3>items contains elanco product, potential rebate detected.</h3>
+                </div>
+
                 <p><input type = "submit" value = "Confirm"> </p>
                     </form> </div>
                               
@@ -99,6 +103,18 @@
         function itemsConfCheck(value)
         {
             var x = document.getElementById("itemsConfidence");
+            if (value === true || (<%- items[i]%> === undefined)) {
+                x.style.display = "block";
+                } else if ( value === false ) {
+                x.style.display = "none";
+                }
+
+            console.log(value);
+        }
+
+        function elancoProductCheck(value)
+        {
+            var x = document.getElementById("elancoProducts");
             if (value === true) {
                 x.style.display = "block";
                 } else if ( value === false ) {
@@ -107,10 +123,13 @@
 
             console.log(value);
         }
+
         clinicNameConfCheck(<%- clinicNameConf %>);
         clinicAddrConfCheck(<%- clinicAddressConf %>);
         invoiceDateConfCheck(<%- invoiceDateConf %>);
         itemsConfCheck(<%- itemsConf %>);
+        elancoProductCheck(<%- containsElancoProduct %>)
+
     </script>
 </body>
 </html>
