@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Check Data Page</title>
+</head>
+<body>
+    <div class = "mainContainer">
+
+        <div class = "logoContainer"></div>
+        <div class = "loginCont">
+
+            <h1> Please check details are correct </h1>
+
+            <form action = "" method = "POST"> 
+          
+                <p><label for="clinicName">Clinic Name:</label>  
+                
+                    <input type="text" name="clinicname" id="clinicName" placeholder="Please Enter the Clinic Name" value = "<%- clinicName %>"> </p> 
+                    <div id="clinicNameConfidence">
+                        <p>Please check this value.</p>
+                    </div>
+                
+                <p><label for="clinicAddress">Clinic Address:</label> 
+                
+                    <input type="text" name="clinicAddress" id="clinicAddress" placeholder="Please Enter The Clinic Address" value = "<%- clinicAddress %>"> </p>
+                    <div id="clinicAddressConfidence">
+                        <p>Please check this value.</p>
+                    </div>
+                    <p><label for="invoiceDate">Date Issued:</label>  
+                
+                        <input type="text" name="invoiceDate" id="invoiceDate" placeholder="Please Enter The Date of Invoice" value = "<%= invoiceDate %>"> </p>
+                        <div id="invoiceDateConfidence">
+                            <p>Please check this value.</p>
+                        </div>
+                    
+                    <p><label for="Items">Products:</label> 
+
+                        <% for(var i = 0; i < items.length; i++) { %>
+                            <input type="text" name="Info" id="Info" placeholder="Product" value = "<%= items[i] %>">
+                          <% } %>                                                                          
+                          <div id="itemsConfidence">
+                            <p>Please check this value.</p>
+                        </div>
+               
+                <p><input type = "submit" value = "Confirm"> </p>
+                    </form> </div>
+                              
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        window.history.pushState("", "", '/dataValidationPage');
+    </script>
+    
+    <script>
+        function clinicNameConfCheck(value)
+        {
+            if ( value === true ) {
+                $( "#clinicNameConfidence" ).show();
+                } else if ( value === false ) {
+                $( "#clinicNameConfidence" ).hide();
+                }
+
+            console.log(value);
+        }     
+
+        function clinicAddrConfCheck(value)
+        {
+            if ( value === true ) {
+                $( "#clinicAddressConfidence" ).show();
+                } else if ( value === false ) {
+                $( "#clinicAddressConfidence" ).hide();
+                }
+                console.log(value);
+        }   
+
+        function invoiceDateConfCheck(value)
+        {
+            if ( value === true ) {
+                $( "#invoiceDateConfidence" ).show();
+                } else if ( value === false ) {
+                $( "#invoiceDateConfidence" ).hide();
+                }
+                console.log(value);
+        }       
+
+        function itemsConfCheck(value)
+        {
+            if ( value === true ) {
+                $( "#itemsConfidence" ).show();
+                } else if ( value === false ) {
+                $( "#itemsConfidence" ).hide();
+                }
+                console.log(value);
+        }
+        //clinicNameConfCheck('<%- clinicNameConf %>');
+        //clinicAddrConfCheck('<%- clinicAddressConf %>');
+        //invoiceDateConfCheck('<%- invoiceDateConf %>');
+        //itemsConfCheck('<%- itemsConf %>');
+    </script>
+</body>
+</html>

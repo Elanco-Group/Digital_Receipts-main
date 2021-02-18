@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Elanco Group A - Log In</title>
+  <meta name="description" content="Elanco Group A">
+  <meta name="author" content="Group A">
+
+  <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+  
+    <div class = "mainContainer">
+
+
+        <div class = "logoContainer"></div>
+        <div class = "loginCont">
+
+            <form method = "POST">
+          
+                <p><label for="yourEmail">Email:</label>  
+                
+                    <input type="email" name="email" id="email" placeholder="Please Enter Your Email"> </p>
+                
+                <p><label for="yourPassword">Password:</label> 
+                
+                    <input type="password" name="password" id="password" placeholder="Please Enter Your Password"> </p>
+                
+                                    
+                <p><button type="submit" id="login">Login</button></p> 
+                <p>      
+                    <% if (messages.error) { %>
+                    <%= messages.error %>
+                    <% } %>
+                </p> 
+                
+            </form> 
+                <p><button type="submit" id="register" onclick = "location.href= './register'">Register</button></p>
+                
+                </div>
+                              
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>User Dashboard</title>
+  <meta name="description" content="Elanco Group A">
+  <meta name="author" content="Group A">
+
+  <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+    <div class = "mainContainer">
+
+        <div class="loader"></div>
+
+
+        <div class = "logoContainer"></div>
+        <div class = "userBar">
+
+            <div class = "userbarBtn"><p>Hello <%= name %></p></div>
+            <form action ="logout?_method=DELETE" method="POST">
+                <button type ="submit" id = "logout">Log Out</button>
+            </form>
+        </div>
+        <div class = "loginCont">
+
+
+            <form class = "fileUpload" method = "POST" enctype="multipart/form-data" >
+                <label for="imgPath">Enter Receipt Image Path...</label><br><br>
+                    <input type="file" onchange="previewFile()" id="inpFile" accept="image/*,.pdf" name="imgPath">
+                    <br><img src="" height="200" alt="Image preview" id = "imgPrev">
+                    <br><br>
+                <input type="submit" value="Submit" id = "subRec"><br><br>
+                <input type="button" value="Back" id = "back"><br>
+
+            </form><br>
+      
+                              
+        </div>
+
+        
+
+    </div>
+
+    <script src = "js/filePreview.js"> </script>
+
+</body>
+</html>

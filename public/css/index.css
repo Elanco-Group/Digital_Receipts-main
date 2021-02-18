@@ -1,0 +1,207 @@
+body
+{
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    color:white;
+}
+
+.mainContainer 
+{
+    width: 600px;
+    height: 800px;
+    border-radius:10px;
+    margin:auto;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top:20px;
+    background-color: rgb(0,103,177, 0.3);
+}
+.tableDiv::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tableDiv
+  {
+      overflow-y: scroll;
+      height:500px;
+  }
+.logoContainer
+{
+    background-image: url("../Images/logo.png");
+    background-repeat: no-repeat;
+    width:300px;
+    height:149px;
+}
+
+.loginCont
+{
+    margin-top:10px;
+    width: 500px;
+    height:400px;
+    flex: 0.5 1 auto;
+}
+
+.userBar
+{
+    margin-top: 10px;
+    width:600px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color:rgb(0, 114, 206, 0.6);
+
+}
+
+.userbarBtn
+{
+    width:150px;
+    height:40px;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: larger;
+    text-align: center;
+}
+
+.userbarBtn p 
+{
+    position: relative;
+    top:-10px;
+}
+
+#logout 
+{
+    background-color: #0072CE;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+    width:150px;
+    height:40px;
+    color:white;
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    top:5px;
+}
+
+.spacer 
+{
+    width:auto;
+    height:50px;
+}
+
+/* Form styling */
+label 
+{
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    color:white;
+}
+
+input[type=text], select, textarea 
+{
+    width:95%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius:4px;
+    resize:vertical;
+}
+
+input[type=password], select, textarea 
+{
+    width:95%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius:4px;
+    resize:vertical;
+}
+
+input[type=email], select, textarea 
+{
+    width:95%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius:4px;
+    resize:vertical;
+}
+
+input[type=button], input[type=submit], #login, #register  
+{
+    background-color: #0072CE;
+    padding: 12px 20px;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+    width:100%;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+    margin:auto;
+
+}   
+
+input[type=button]:hover{
+    background-color: rgb(0, 114, 206 ,0.8);
+}
+
+
+#info {
+
+    margin-top:10px;
+}
+
+.fileUpload
+{
+    margin:auto;
+    text-align: center;
+}
+
+#imgPrev
+{
+    display:none;
+}
+
+table{
+	align-self: center;	
+	width:100%;
+}
+th, td{
+	padding:10px 4px;
+    text-align:left;	
+    font-family: 'Open Sans', sans-serif;
+
+}	
+th{
+	text-transform:uppercase;
+	border-bottom:4px solid #000;	
+    background-color:#f8f8f8;	
+    position:sticky;
+    top:0;
+}
+tr:nth-child(odd){
+	background-color:rgb(190, 196, 214);	
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position:absolute;
+    top :400px;
+    z-index: 10;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
